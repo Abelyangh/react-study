@@ -1,0 +1,40 @@
+1. 使用JSX和ES6重新实现下面的组件
+
+var CustomerButton = React.createClass({
+    
+	render: function() {
+	   return React.createElement('Button', 
+	                               {className: 'float-button', 
+	                                click: function() {console.log('click this button');}
+	                               });
+	}
+});
+
+
+2. 给下面的组件设置两个默认属性Name和SN号, Name为String类型，SN为Number类型
+
+class Computer extends React.Component {
+	
+   render() {
+     return (<div id={this.props.sn}>{this.props.name}</div>);
+   }
+}
+
+3. 使用伪代码的方式，结合React的组件的生命周期， 实现以下的需求 
+
+  i： 实现一个Account的列表。 
+
+  ii： 每个Account都是一个组件 ，有对应的Account Name， balance， currency
+
+  iii： Account的列表需要发送请求从服务器获取数据。 
+
+
+4. 完成一个demo 案例, 需求如下：
+
+  i： must use react，ES6， redux
+
+  ii: have components and action , reducer.  
+
+  iii: best to implement unit test for action and reducer. 
+  
+
