@@ -3,9 +3,10 @@
   redux 是一个对于Javascript应用的可以预测的状态容器，虽然是React社区提出来的， 但是可以结合React , Angular,Backbone
   or vue.js
 ## Three principles
-  .一个应用程序只有一个store,所有的state都是存储在一个对象中。 
-  .state是只读的，只能通过actions去改变它。 
-  .Reducers创建下一个state，返回当前的store的一个缩影(current state)和一个action
+  - 一个应用程序只有一个store,所有的state都是存储在一个对象中。 
+  - state是只读的，只能通过actions去改变它。 
+  - Reducers创建下一个state，返回当前的store的一个缩影(current state)和一个action
+## Core concepts
   1. Workflow
   2. Action
   3. Reducer
@@ -22,7 +23,7 @@
 
   Example: 
 
-  <code>
+  ```
     const Redux = require('redux');
     const createStore = Redux.createStore;
     const reducer = (state, action) => {
@@ -55,7 +56,7 @@
     store.dispatch(stopAction);
     store.dispatch(cautionAction);
     store.dispatch(goAction);
-  <code>
+   ```
 
 reference: 
 
