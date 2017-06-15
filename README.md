@@ -3,11 +3,13 @@
 
 1. React component create: 
 
+```
 export class Counter extends React.component {
 	render () {
       return <h1>counter: {this.props.counter}</h1>
     }
 }
+```
 
 2. Component lifecycle :
 
@@ -17,6 +19,7 @@ export class Counter extends React.component {
       3. render() 
       4. componentDidMount() 
 
+```
 export class Computer extends React.component {
     constructor(props) {
        super(props);
@@ -38,7 +41,7 @@ export class Computer extends React.component {
     	//推荐在这个地方做异步的请求数据。 让后触发重绘页面。
     }
 }
-
+```
 
 
   Updating (更新) by changes to props or state 

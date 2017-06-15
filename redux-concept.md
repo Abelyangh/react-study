@@ -40,7 +40,6 @@
     }
 
     const store = createStore(reducer);
-    
     const cautionAction = {
          type : 'CAUTION',
          payload: {}
@@ -57,7 +56,32 @@
     store.dispatch(cautionAction);
     store.dispatch(goAction);
    ```
+## Redux  API
+
+  - Object createStore(reducer, initialState) 
+  - Object combineReducer(reducer) 合并所有的reducer到一个
+  - Object compose(...functions) 构成functions ,从左到右
+  - void applyMiddleware(...middlewares) 声明中间件 
+  - Object bindActionCreators(actionCtreators, dispatch) 绑定Action到dispatch方法。
+
+  - Object getState() 
+  - void  dispatch()
+  - replaceReducer(nextReducer)
+  - subscribe(functioncallback)  causes redux to call the callback method for every dispatch
+
+## React-Redux
+  - Connect 
+
+  ```
+  import {connect} from 'react-redux';
+  const mapStateToProps = (state) => ({ budgets: values(state.entities.budgets)})
+  const mapDispatchToProps = (dispatch) => bindActionCreators(merge({}, BudgetActions, NavigationActions), dispatch)
+  connect(mapStateToProps, mapDispatchToProps)(component);
+
+  ```
 
 reference: 
 
    http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html
+
+##
