@@ -1,4 +1,24 @@
-1. 使用JSX和ES6重新实现下面的组件
+1. React组件的生命周期分为哪三部分：______, ______, ______.
+
+2. Flux将一个应用分成哪四个部分：______, ______, ______, ______.
+
+3. Redux中，store可以有多少个？
+A. 一个
+B. 多个
+C. 一个或多个
+
+4. Redux中，想改变state值，应该用哪些方式？
+A. 修改state
+B. 使用setState()
+C. A或B
+
+5. 使用es6, const text = 123; 希望将obj赋值为{text:123}可以用哪些方式(多选)
+A. let obj = {text:text}
+B. let obj = {text}
+C. let obj = {'text':text}
+D. let obj = {text=>text}
+
+6. 使用JSX和ES6重新实现下面的组件
 
 var CustomerButton = React.createClass({
     
@@ -11,7 +31,7 @@ var CustomerButton = React.createClass({
 });
 
 
-2. 给下面的组件设置两个默认属性Name和SN号, Name为String类型，SN为Number类型
+7. 给下面的组件设置两个默认属性Name和SN号, Name为String类型，SN为Number类型
 
 class Computer extends React.Component {
 	
@@ -20,7 +40,7 @@ class Computer extends React.Component {
    }
 }
 
-3. 使用伪代码的方式，结合React的组件的生命周期， 实现以下的需求 
+8. 使用伪代码的方式，结合React的组件的生命周期， 实现以下的需求 
 
   i： 实现一个Account的列表。 
 
@@ -29,8 +49,15 @@ class Computer extends React.Component {
   iii： Account的列表需要发送请求从服务器获取数据。 
 
 
-4. 完成一个demo 案例, 需求如下：
+9. 完成一个demo 案例, 需求如下：
+  
+   在 https://github.com/Abelyangh/react-chinasoft 此工程上面添加一个个人消费的记录的功能。 
 
+   总共两个页面，一个是消费记录列表页面，一个是添加消费记录的页面，个人消费记录包含消费的日期，消费的金额。添加一条记录可以在列表页面显示。
+
+   请对日期和消费金额进行校验，日期是YYYY-MM格式，不能为空， 消费金额大于0的纯数字。 
+
+   
   i： must use react，ES6， redux
 
   ii: have components and action , reducer.  
