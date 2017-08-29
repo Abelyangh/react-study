@@ -95,9 +95,40 @@ $ webpack --progress --colors --watch
 ## error handle
 
 Webpack 的配置比较复杂，很容出现错误，下面是一些通常的故障处理手段。
-
+  
 一般情况下，webpack 如果出问题，会打印一些简单的错误信息，比如模块没有找到。我们还可以通过参数 --display-error-details 来打印错误详情
 
 webpack --display-error-details
 
+##Loader 
+
+Loader 其他的资源文件,不是javascript文件， 如 es2015 ,css , image 等。 
+
+babel-loader: The interface between Babel and Webpack
+babel-core: Understands how to read & parse code, and generate corresponding output
+babel-preset-es2015: Rules for Babel on how to process ES2015 code and convert it into ES5
+
+```
+const path = require('path');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, './dist/'),
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015']
+                }
+            }
+        ]
+    }
+};
+```
 
