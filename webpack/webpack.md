@@ -100,7 +100,7 @@ Webpack 的配置比较复杂，很容出现错误，下面是一些通常的故
 
 webpack --display-error-details
 
-##Loader 
+## Loader 
 
 Loader 其他的资源文件,不是javascript文件， 如 es2015 ,css , image 等。 
 
@@ -131,4 +131,76 @@ module.exports = {
     }
 };
 ```
+test: We need to tell the Loader that we only want it to process JavaScript files. We don't want it to look for CSS, HTML, images and so on - only JavaScript (.js) files. In order to do so, we provide a regex expression that will match .js files
+loader: The loader to use - in this case the Babel Loader
+exclude: We don't want Babel to process any files under node_modules
+query.presets: which Babel Preset (or rules) we want to apply - in our case we're looking for Babel to convert ES2015 code
 
+CSS and style loader 
+```
+loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader']
+            }
+        ]
+```
+ExtractTextPlugin
+extract the CSS and output it into a file that we can then import
+
+```
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, './dist/'),
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader')
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin('style.css')
+    ]
+};
+```
+Image page loader 
+
+image-webpack-loader: will try to automatically compress large images for us
+url-loader: will inline the results from image-webpack-loader if the results are small, and include the image in the output directory if they are large
+
+```
+          {
+                test: /\.png$/,
+                loaders: [
+                    'url-loader?limit=5000',
+                    'image-webpack-loader'
+                ]
+            }
+```
+
+reference:
+https://github.com/dwqs/blog/issues/21
