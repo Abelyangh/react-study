@@ -15,15 +15,35 @@ class ComponentInput extends Component{
 			content: event.target.value
 		})
 
+		this.handleUsernameBlur = this.handleUsernameBlur.bind(this);
+
 		this.submitHandler = this.submitHandler.bind(this);
 	}
 
 	submitHandler () {
 		if(this.props.onSubmit) {
 				const { username, content } = this.state;
-				this.props.onSubmit({username, content});
+				this.props.onSubmit({username, content, createdTime: +new Date()});
 			}
 			this.setState({content: ''});
+	}
+	
+	componentDidMount() {
+		const username = this._loadUserName();
+		if (username) {
+			this.setState({username})
+		}
+		this.input.focus();
+
+	}
+
+	_loadUserName() {
+		return localStorage.getItem('username');
+	}
+
+
+	handleUsernameBlur(event) {
+        localStorage.setItem('username', event.target.value);
 	}
 
 	render() {
@@ -32,7 +52,9 @@ class ComponentInput extends Component{
 	        <div className='comment-field'>
 	          <span className='comment-field-name'>用户名：</span>
 	          <div className='comment-field-input'>
-	            <input value={this.state.username} onChange={this.usernameChangeHandler}/>
+	            <input value={this.state.username} onChange={this.usernameChangeHandler} 
+	            onBlur= {this.handleUsernameBlur}
+	            ref={(input)=> this.input = input}/>
 	          </div>
 	        </div>
 	        <div className='comment-field'>

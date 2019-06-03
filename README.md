@@ -70,3 +70,35 @@ export class Computer extends React.component {
     1. props
     2. state
 
+ 6. ref 来操作dom 
+    <input ref={(input)=> this.input = input}/>
+    ref的值是个函数
+ 7. props.children 和容器类组件
+
+    ```
+    class Card extends Component {
+        render () {
+          return (
+            <div className='card'>
+              <div className='card-content'>
+                {this.props.children}
+              </div>
+            </div>
+          )
+        }
+    }
+    ```
+ 8. prop-types
+    npm install --save prop-types
+
+    ```
+    static propTypes = {
+    comment: PropTypes.object
+    }
+    ```
+ 9. 
+
+
+ appreix
+
+ [React small book](http://huziketang.mangojuice.top/books/react/lesson25)
