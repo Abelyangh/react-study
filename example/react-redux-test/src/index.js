@@ -6,6 +6,8 @@ import './index.css';
 import Header from './Header';
 import Content from './Content';
 
+import { Provider } from './Provider';
+
 function createStore(reducer) {
 	let state = null;
 	const listeners = [];
@@ -40,23 +42,20 @@ const themeReducer = (state, action) => {
 const store = createStore(themeReducer);
 
 class Index extends Component {
-
-  static childContextTypes = {
-  	store: PropTypes.object
-  }
-
-  getChildContext() {
-  	return {store};
-  }
-  render() {
-  	return (<div>
-         <Header/>
-         <Content/>
-  		</div>)
+  render () {
+    return (
+      <div>
+        <Header />
+        <Content />
+      </div>
+    )
   }
 }
 
+// 把 Provider 作为组件树的根节点
 ReactDOM.render(
-  <Index />,
+  <Provider store={store}>
+    <Index />
+  </Provider>,
   document.getElementById('root')
-);
+)

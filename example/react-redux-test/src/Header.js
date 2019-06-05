@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from './react-redux';
 
 class Header extends Component {
 
@@ -7,7 +8,7 @@ class Header extends Component {
 		store: PropTypes.object
 	}
 
-	constructor() {
+	/*constructor() {
 		super();
 		this.state = { themeColor: ''};
 	}
@@ -22,12 +23,18 @@ class Header extends Component {
 		const {store} = this.context;
 		const state = store.getState();
 		this.setState({ themeColor: state.themeColor});
-	}
+	}*/
 
 	render() {
-		return (<h1 style={{ color: this.state.themeColor }}>React js small book</h1>);
+		return (<h1 style={{ color: this.props.themeColor }}>React js small book</h1>);
 	}
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    themeColor: state.themeColor
+  }
+}
+
+export default connect(mapStateToProps)(Header);
 
